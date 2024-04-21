@@ -1,12 +1,9 @@
 import { Request, Response } from "express";
+import { createMenu } from "../helpers/createMenu";
 
 export const index = (req: Request, res: Response) => {
     res.render("pages/index", {
-        menu: {
-            all: true,
-            dog: false,
-            cat: false
-        },
+        menu: createMenu("all"),
         banner: {
             title: "Todos os animais",
             background: "allanimals.jpg"
@@ -16,11 +13,7 @@ export const index = (req: Request, res: Response) => {
 
 export const dogs = (req: Request, res: Response) => {
     res.render("pages/index", {
-        menu: {
-            all: false,
-            dog: true,
-            cat: false
-        },
+        menu: createMenu("dog"),
         banner: {
             title: "Todos os cachorros",
             background: "banner_dog.jpg"
@@ -30,11 +23,7 @@ export const dogs = (req: Request, res: Response) => {
 
 export const cats = (req: Request, res: Response) => {
     res.render("pages/index", {
-        menu: {
-            all: false,
-            dog: false,
-            cat: true
-        },
+        menu: createMenu("cat"),
         banner: {
             title: "Todos os gatos",
             background: "banner_cat.jpg"
